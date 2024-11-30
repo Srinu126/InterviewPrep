@@ -54,3 +54,45 @@ md1();
 
 const md2 = displayDetails.myBind(myName, "Waterloo");
 md1("ON");
+
+
+//map polyfill
+Array.prototype.myMap = function (cb) {
+  let newArr = [];
+  for (let i = 0; i < this.length; i++) {
+    newArr.push(cb(this[i], i, this));
+  }
+  return newArr;
+};
+
+//filter polyfill
+Array.prototype.myFilter = function (cb) {
+  let newArr = [];
+  for (let i = 0; i < this.length; i++) {
+    if (cb(this[i], i, this)) {
+      newArr.push(this[i]);
+    }
+  }
+  return newArr;
+};
+
+//reduce polyfill
+Array.prototype.myReduce = function (cb, initialValue) {
+  let accumulator = initialValue;
+  for (let i = 0; i < this.length; i++) {
+    accumulator = accumulator ? cb(accumulator, this[i], i, this) : this[i];
+  }
+  return accumulator;
+};
+
+let arr1 = [2, 3, 4, 5, 6, 7, 8];
+
+const mapRes = arr1.map((el) => el * 2);
+const myMapRes = arr1.myMap((ele) => ele * 2);
+console.log(mapRes, myMapRes);
+const filterRes = arr1.filter((el) => el % 2 === 0);
+const myFilterRes = arr1.filter((el) => el % 2 === 0);
+console.log(filterRes, myFilterRes);
+const reduceRes = arr1.reduce((acc, curr) => acc + curr);
+const myReduceRes = arr1.myReduce((acc, curr) => acc + curr);
+console.log(reduceRes, myReduceRes);
