@@ -1,5 +1,5 @@
 /**
- * React Hook form is a lightweight form management library that is used to build highly performant form compponents.
+ * React Hook form is a lightweight form management library that is used to build highly performant form components.
  * It offers complete solutions for managing form data, state, field states, validation, error generation and third party schema integrations.
  * React Hook Form prioritizes on uncontrolled input implementation. 
  * This means, form fields are uncontrolled by default, in contrast to the React hype of controlling all input fields.
